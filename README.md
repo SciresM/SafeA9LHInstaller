@@ -8,7 +8,7 @@ Installs A9LH on New 3DS consoles with no downgrading required. Warning: unsafe.
 **Credits:**
 
 delebile for his A9LH implementation, everyone in #cakey, StandardBus for allowing this to happen by hardmodding my consoles.
-dark_samus for finding the ECB flaw/key-firm pairing that enables this.
+dark_samus for the ECB flaw, dark_samus and Myria for the key-firm pairing that enables this.
 Code for writing to the screens is from CakesFW.
 Original exploit by plutoo.
 
