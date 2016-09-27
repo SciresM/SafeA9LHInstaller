@@ -26,11 +26,6 @@ static const u8 firm0A9lhHash[0x20] = {
     0x8E, 0xF0, 0x4A, 0xB1, 0xA6, 0x7F, 0xCD, 0xAB, 0x0C, 0x0A, 0xC0, 0x69, 0xA7, 0x9D, 0xC5, 0x04
 };
 
-static const u8 firm10_2Hash[0x20] = {
-    0xD2, 0x53, 0xC1, 0xCC, 0x0A, 0x5F, 0xFA, 0xC6, 0xB3, 0x83, 0xDA, 0xC1, 0x82, 0x7C, 0xFB, 0x3B,
-    0x2D, 0x3D, 0x56, 0x6C, 0x6A, 0x1A, 0x8E, 0x52, 0x54, 0xE3, 0x89, 0xC2, 0x95, 0x06, 0x23, 0xE5
-};
-
 static const u8 firm10_0Hash[0x20] = {
     0xD8, 0x2D, 0xB7, 0xB4, 0x38, 0x2B, 0x07, 0x88, 0x99, 0x77, 0x91, 0x0C, 0xC6, 0xEC, 0x6D, 0x87,
     0x7D, 0x21, 0x79, 0x23, 0xD7, 0x60, 0xAF, 0x4E, 0x8B, 0x3A, 0xAB, 0xB2, 0x63, 0xE4, 0x21, 0xC6
@@ -136,14 +131,6 @@ static inline void installer(void)
 
     if(!verifyHash((void *)FIRM0_OFFSET, FIRM0_SIZE, firm0Hash))
         shutdown(1, "Error: firm0.bin is invalid or corrupted");
-
-    //Read 10.2 FIRM, verify it's good
-    path = "a9lh/firm1.bin";
-    if(fileRead((void *)FIRM1_OFFSET, path) != FIRM1_SIZE)
-        shutdown(1, "Error: firm1.bin doesn't exist or has a wrong size");
-
-    if(!verifyHash((void *)FIRM1_OFFSET, FIRM1_SIZE, firm10_2Hash))
-        shutdown(1, "Error: firm1.bin is invalid or corrupted");
     
     //Read 10.0 FIRM, verify it's good
     path = "a9lh/10_0_firm.bin";
@@ -184,7 +171,7 @@ static inline void installer(void)
     // Copy in branch sled
     memcpy((void *)BRANCHCODE_OFFSET, branchSled, 0x2C);
 
-    posY = drawString("All checks passed, #yolo...", 10, posY + SPACING_Y, COLOR_WHITE);
+    posY = drawString("All checks passed, rebooting...", 10, posY + SPACING_Y, COLOR_WHITE);
 
     //Point of no return, install stuff in the safest order
     sdmmc_nand_writesectors(0x5C000, MAX_STAGE2_SIZE / 0x200, (vu8 *)STAGE2_OFFSET);
