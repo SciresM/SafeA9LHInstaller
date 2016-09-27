@@ -382,15 +382,12 @@ void setupKeyslot0x11(u32 a9lhBoot, const void *otp)
 }
 
 //Generate and encrypt an A9LH key sector
-void generateSector(u8 *keySector, u32 mode)
+void generateSector(u8 *keySector)
 {
-    //Inject key2
-    memcpy(keySector + 0x10, mode ? key2s[0] : key2s[2], 0x10);
+    //Set key1 = key0, yolo
+    memcpy(keySector + 0x10, keySector + 0x0, 0x10);
 
-    //Encrypt key sector
-    aes_use_keyslot(0x11);
-    for(u32 i = 0; i < 32; i++)
-        aes(keySector + (0x10 * i), keySector + (0x10 * i), 1, NULL, AES_ECB_ENCRYPT_MODE, 0);
+    //Don't encrypt key sector
 }
 
 //Read and decrypt the NAND key sector
@@ -403,6 +400,12 @@ void getSector(u8 *keySector)
     aes_use_keyslot(0x11);
     for(u32 i = 0; i < 32; i++)
         aes(keySector + (0x10 * i), keySector + (0x10 * i), 1, NULL, AES_ECB_DECRYPT_MODE, 0);
+}
+
+void getEncryptedSector(u8 *keySector)
+{
+    //Read keysector from NAND
+    sdmmc_nand_readsectors(0x96, 1, keySector);
 }
 
 //Check SHA256 hash

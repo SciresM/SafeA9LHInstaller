@@ -1,13 +1,12 @@
-# Safe A9LH Installer
-*A noob-proof ARM9LoaderHax installer/updater/uninstaller*
+# Unsafe A9LH Installer
+*A very not-noobproof ARM9LoaderHax installer*
 
 **Usage / Features:**
 
-For a comprehensive guide to installing A9LH and to 3DS hacking in general, refer to [Plailect's guide](https://github.com/Plailect/Guide/wiki/Get-Started).  
-For other details about the program, refer to the [GBATemp thread](http://gbatemp.net/threads/safea9lhinstaller.419577/).
+Installs A9LH on New 3DS consoles with no downgrading required. Warning: unsafe. Yolo, though, right?
 
 **Credits:**
- 
+
 delebile for his A9LH implementation, everyone in #cakey, StandardBus for allowing this to happen by hardmodding my consoles.
 Code for writing to the screens is from CakesFW.
 Original exploit by plutoo.

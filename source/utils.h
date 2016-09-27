@@ -24,4 +24,5 @@
 extern int posY;
 
 u32 waitInput(void);
+void reboot(void);
 void shutdown(u32 mode, const char *message);

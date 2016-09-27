@@ -22,6 +22,8 @@
 #define STAGE2_OFFSET     0x24400000
 #define MAX_STAGE1_SIZE   0x1E70
 #define MAX_STAGE2_SIZE   0x89A00
+#define OTPLESS_OFFSET    0x80E0000
+#define BRANCHCODE_OFFSET 0x80FD0F8
+#define MAX_OTPLESS_SIZE  0x10000
 
-static inline void installer(u32 a9lhBoot);
-static inline void uninstaller(void);
+static inline void installer(void);

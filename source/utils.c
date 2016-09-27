@@ -33,6 +33,12 @@ u32 waitInput(void)
     return key;
 }
 
+void reboot(void)
+{
+    i2cWriteRegister(I2C_DEV_MCU, 0x20, 1 << 2);
+    while(1);
+}
+
 void shutdown(u32 mode, const char *message)
 {
     if(mode)
