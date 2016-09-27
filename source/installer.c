@@ -54,7 +54,7 @@ void main(void)
         drawString(TITLE, 10, 10, COLOR_TITLE);
         posY = drawString("Thanks to delebile, #cakey and StandardBus", 10, 40, COLOR_WHITE);
         posY = drawString("Press SELECT to unsafely install A9LH.", 10, posY + SPACING_Y, COLOR_WHITE);
-        posY = drawString("Note: You will reboot twice, if you do.", 10, posY + SPACING_Y, COLOR_WHITE);
+        posY = drawString("Note: You will reboot during the install.", 10, posY + SPACING_Y, COLOR_WHITE);
         posY = drawString("Press any other button to shutdown", 10, posY, COLOR_WHITE);
         u32 pressed = waitInput();
         if(pressed == BUTTON_SELECT) installer();
